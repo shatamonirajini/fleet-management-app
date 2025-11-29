@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+</head>
+<body>
+    <div id="side bar">
+   <input type="text" id="reg-NO" placeholder="Red NO of Vehicle">
+   <br><br>
+   <select id="category">
+    <option value="">select category</option>
+    <option value="Auto">Auto</option>
+    <option value="Car">Car</option>
+    <option value="Truck">Truck</option>
+    <option value="Bus">Bus</option>
+   </select>
+   <br><br>
+   <input type="text" id="name" placeholder="enter driver name">
+   <br><br>
+   <select id="select">
+    <option value="">select availablity</option>
+    <option value="available">available</option>
+    <option value="unavailable">unavailable</option>
+   </select>
+   <button onclick="addfleet()">add Fleet</button>
+   </div>
+   <div id="contentArea"></div>
+
+  
+
+
+
+   <script>
+    let Vehicles=[]
+     imgsrc="https://coding-platform.s3.amazonaws.com/dev/lms/tickets/5e80fcb6-3f8e-480c-945b-30a5359eb40e/JNmYjkVr3WOjsrbu.png"
+    function addfleet(){
+        let reg=document.getElementById(reg-NO).value;
+        let cat=document.getElementById(category).value;
+        let driver_name=document.getElementById(name).value;
+        let available=document.getElementById(select).value;
+        if(!reg||!cat||!driver||!available){
+            alert("please fill all the details")
+            return;
+        }
+        let Vehicle={
+            reg,
+            cat,
+            diver,
+            available
+        };
+        Vehicle.push(Vehicles)
+        displayVehicles()
+        document.getElementById(reg-NO).value="";
+        document.getElementById(category).value="";
+        document.getElementById(name).value="";
+        document.getElementById(select).value="";
+
+
+    }
+    function display(){
+        let updatebtn=document.createElement("button")
+        updatebtn.textContent="update"
+        let change_availablitybtn=document.createElement("button")
+        change_availablitybtn.textContent="Change"
+        let deletebtn=document.createElement("button")
+        deletebtn.textContent="delete"
+        let deletebtn
+
+    }
+   </script>
+    
+</body>
+</html>

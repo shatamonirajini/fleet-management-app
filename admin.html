@@ -6,8 +6,23 @@
     <title>Dashboard</title>
 </head>
 <body>
+    <nav>
+        <slect id="filter">
+            <option value="">all</option>
+            <option value="auto">Auto</option>
+            <option value="car">Car</option>
+            <option value="truck">Truck</option>
+            <option value="bus">Bus</option>
+        </slect>
+        <slect id="available">
+            <option value="Available">available</option>
+            <option value="Unavailable">unavailable</option>
+
+        </slect>
+        <button onclick="clear()">ClearFilter</button>
+    </nav>
     <div id="side bar">
-   <input type="text" id="reg-NO" placeholder="Red NO of Vehicle">
+   <input type="text" id="reg_NO" placeholder="Red NO of Vehicle">
    <br><br>
    <select id="category">
     <option value="">select category</option>
@@ -34,7 +49,7 @@
 
    <script>
     let Vehicles=[]
-     imgsrc="https://coding-platform.s3.amazonaws.com/dev/lms/tickets/5e80fcb6-3f8e-480c-945b-30a5359eb40e/JNmYjkVr3WOjsrbu.png"
+      let imgsrc="https://coding-platform.s3.amazonaws.com/dev/lms/tickets/5e80fcb6-3f8e-480c-945b-30a5359eb40e/JNmYjkVr3WOjsrbu.png"
     function addfleet(){
         let reg=document.getElementById(reg-NO).value;
         let cat=document.getElementById(category).value;
@@ -48,27 +63,68 @@
             reg,
             cat,
             diver,
-            available
+            available,
+            imgsrc
+
         };
-        Vehicle.push(Vehicles)
-        displayVehicles()
-        document.getElementById(reg-NO).value="";
+        Vehicle.push(Vehicle)
+        renderVehicle(vehicles)
+
+        document.getElementById(reg_NO).value="";
         document.getElementById(category).value="";
         document.getElementById(name).value="";
         document.getElementById(select).value="";
 
 
     }
-    function display(){
-        let updatebtn=document.createElement("button")
+    function renderVehicle(list){
+        let contentArea=document.getElementById("Vehicles")
+        contentArea.innerHTML=""
+        list.array.forEach((vehicle,index) => {
+            let card=document.createElement("div")
+            card.className="card"
+            let img=document.createElement("img")
+            img.textcontent=vehicle.imgsrc
+            let reg_NO=document.createElement("h3")
+            reg_NO.textcontent=vehicle.reg
+            let  category=document.createElement("p")
+            category.textcontent=vehicle.cat
+            let name=document.createElement("p")
+            name.textcontent=vehicle.driver
+            let available=document.createElement("p")
+            available.textcontent=vehicle.reg
+            let updatebtn=document.createElement("button")
         updatebtn.textContent="update"
         let change_availablitybtn=document.createElement("button")
         change_availablitybtn.textContent="Change"
         let deletebtn=document.createElement("button")
         deletebtn.textContent="delete"
-        let deletebtn
+        deletebtn.addEventListener("click",function(){
+            deletevechile(index)
+        })
 
-    }
+        
+        
+
+    
+    card.appendChild(img)
+    card.appendChild(reg)
+    card.appendChild(cat)
+    card.appendChild(driver)
+    card.appendChild(available)
+    card.appendChild(updatebtn)
+    card.appendChild(change_availablitybtn)
+    card.appendChild(deletebtn)
+    contentarea.appendChild(card)
+     });
+    } 
+    function deletevechile(){
+        vehicle.splice(index,1)
+        renderVehicle(list)
+
+    } 
+    
+
    </script>
     
 </body>
